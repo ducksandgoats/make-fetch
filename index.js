@@ -7,7 +7,7 @@ export function makeFetch (handler, {
   Response = globalThis.Response
 } = {}) {
   return async function fetch (requestOptions) {
-    const request = new Request(...requestOptions)
+    const request = new Request(requestOptions.url, requestOptions)
 
     const { body = null, ...responseOptions } = await handler(request)
 
